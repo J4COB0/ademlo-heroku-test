@@ -11,7 +11,7 @@ const { AppError } = require("../utils/appError");
 // Get all users
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   //Nested includes
-  const user = await User.findAll({
+  const users = await User.findAll({
     where: { status: "active" },
     include: [
       {
@@ -25,7 +25,7 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      users: user,
+      users: users,
     },
   });
 });

@@ -1,6 +1,7 @@
 // Express
 const express = require("express");
 
+// Controllers
 const { globalErrorHandle } = require("./controllers/error.controller");
 
 // Routers
@@ -29,10 +30,10 @@ app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/comments", commentsRouter);
 
 app.use("*", (req, res, next) => {
-  next(new AppError(404, `${req.originalUrl} not found in this server`));
+  next(new AppError(404, `${req.originalUrl} not found in this server.`));
 });
 
 // Error handler
-app.use(globalErrorHandle);
+app.use( globalErrorHandle );
 
 module.exports = { app };
